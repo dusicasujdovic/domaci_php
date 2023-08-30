@@ -59,7 +59,9 @@ include('dbBroker.php');
         <td>".$film->naziv."</td>
         <td>".$film->datum_premijere."</td>
         <td>".$film->zanr."</td>
-       
+        <td>".Reziser::getById($film->id_reziser)->ime." ".Reziser::getById($film->id_reziser)->prezime." </td>
+        <td>".Glumac::getById($film->id_glavni_glumac)->ime." ".Glumac::getById($film->id_glavni_glumac)->prezime."</td>
+
         
         
         </tr>";

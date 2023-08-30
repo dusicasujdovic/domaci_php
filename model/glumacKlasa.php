@@ -58,5 +58,51 @@ class Glumac
         }
         return $arrayResult;
     }
+
+    public static function getById($id){    
+        include_once ('dbBroker.php');
+        global $mysqli;
+
+        $sql = "SELECT * FROM glumac where id=".$id;
+
+        if(!($result = $mysqli->query($sql))) {
+            echo "ERROR" . $mysqli->mysql_error;
+            exit();
+        }
+        $glumac = null;
+        while($row = $result->fetch_object()){
+            $glumac = new Glumac($row->ime,$row->prezime,$row->godine,$row->drzava_porekla);
+            $glumac->id = $row->id;
+        }
+
+        return $glumac;
+    }
+
+    public function deleteById(){
+        include_once ('dbBroker.php');
+        global $mysqli;
+
+        $sql = "DELETE FROM glumac WHERE id=".$this->id;
+
+        if ($mysqli->query($sql)) {
+            echo json_encode(new Response(1, "Glumac je izbrisan."));
+            return true;
+        } else {
+            echo json_encode(new Response(0, "Glumac je u upotrebi"));
+            return false;
+        }
+    }
+
+    public function edit(){
+        include_once('dbBroker.php');
+        global $mysqli;
+        $query = "UPDATE glumac SET ime = '" . $this->ime . "', prezime = '" . $this->prezime . "', godine = '" . $this->godine . "', drzava_porekla = '" . $this->drzava_porekla . "' WHERE id = $this->id";
+        if ($mysqli->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }   
+
 }
 ?>

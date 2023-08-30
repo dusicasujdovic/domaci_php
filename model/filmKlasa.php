@@ -61,5 +61,52 @@ class Film
         }
         return $arrayResult;
     }
+
+    public static function getById($id){    
+        include_once ('dbBroker.php');
+        global $mysqli;
+
+        $sql = "SELECT * FROM film where id=".$id;
+
+        if(!($result = $mysqli->query($sql))) {
+            echo "ERROR" . $mysqli->mysql_error;
+            exit();
+        }
+        $song = null;
+        while($row = $result->fetch_object()){
+            $film = new Film($row->naziv,$row->datum_premijere,$row->zanr,$row->id_reziser,$row->id_glavni_glumac);
+            $film->id = $row->id;
+        }
+
+        return $film;
+    }
+
+    public function deleteById(){
+        include_once ('dbBroker.php');
+        global $mysqli;
+
+        $sql = "DELETE FROM film WHERE id=".$this->id;
+
+        if ($mysqli->query($sql)) {
+            echo json_encode(new Response(1, "Film je izbrisan."));
+            return true;
+        } else {
+            echo json_encode(new Response(0, "Film je trenutno u upotrebi."));
+            return false;
+        }
+    }
+
+    public function edit(){
+        include_once('dbBroker.php');
+        global $mysqli;
+        $query = "UPDATE film SET naziv = '" . $this->naziv . "', datum_premijere = '" . $this->datum_premijere . "', zanr = '" . $this->zanr . "', id_reziser = '" . $this->id_reziser . "', id_glavni_glumac = '" . $this->id_glavni_glumac . "' WHERE id = $this->id";
+        if ($mysqli->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }   
+
+
 }
 ?>

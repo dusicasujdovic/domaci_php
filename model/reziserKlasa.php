@@ -57,5 +57,51 @@ class Reziser
         }
         return $arrayResult;
     }
+
+    public static function getById($id){    
+        include_once ('dbBroker.php');
+        global $mysqli;
+
+        $sql = "SELECT * FROM reziser where id=".$id;
+
+        if(!($result = $mysqli->query($sql))) {
+            echo "ERROR" . $mysqli->mysql_error;
+            exit();
+        }
+        $reziser = null;
+        while($row = $result->fetch_object()){
+            $reziser = new Reziser($row->ime,$row->prezime,$row->broj_filmova);
+            $reziser->id = $row->id;
+        }
+
+        return $reziser;
+    }
+
+    public function deleteById(){
+        include_once ('dbBroker.php');
+        global $mysqli;
+
+        $sql = "DELETE FROM reziser WHERE id=".$this->id;
+
+        if ($mysqli->query($sql)) {
+            echo json_encode(new Response(1, "Režiser je izbrisan."));
+            return true;
+        } else {
+            echo json_encode(new Response(0, "Režiser je u upotrebi."));
+            return false;
+        }
+    }
+
+    public function edit(){
+        include_once('dbBroker.php');
+        global $mysqli;
+        $query = "UPDATE reziser SET ime = '" . $this->ime . "', prezime = '" . $this->prezime . "', broj_filmova = '" . $this->broj_filmova . "' WHERE id = $this->id";
+        if ($mysqli->query($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }   
+
 }
 ?>
