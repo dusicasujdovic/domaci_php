@@ -9,7 +9,7 @@ function izmeniRezisera(id) {
             $('#reziser-edit').append(response);
         },
         error: function (error) {
-            alert("Greska u izmeni rezisera: " + error.status);
+            alert("Greska pri izmeni rezisera: " + error.status);
         }
     });
 }
@@ -30,7 +30,7 @@ function obrisiRezisera(id) {
             }
         },
         error: function (error) {
-            alert("Greska prilikom brisanja rezisera: " + error.status);
+            alert("Greska pri brisanja rezisera: " + error.status);
         }
     });
 }

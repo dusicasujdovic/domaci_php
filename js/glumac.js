@@ -9,7 +9,7 @@ function izmeniGlumca(id) {
             $('#glumac-edit').append(response);
         },
         error: function (error) {
-            alert("Error editing song: " + error.status);
+            alert("Greska pri editovanju glumca: " + error.status);
         }
     });
 }
@@ -30,7 +30,7 @@ function obrisiGlumca(id) {
             }
         },
         error: function (error) {
-            alert("Error deleting song: " + error.status);
+            alert("Greska pri brisanju glumca: " + error.status);
         }
     });
 }

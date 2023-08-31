@@ -28,7 +28,7 @@ if(isset($_POST['save'])){
             <div class="form-group">
                 <label class="col-md-4 control-label">Datum premijere filma</label>
                 <div class="col-md-4">
-                    <input name="datum_premijere" placeholder="Datum" class="form-control" type="date" required minlength="4" maxlength="4">
+                    <input name="datum_premijere" placeholder="Datum" class="form-control" type="date" required minlength="4" maxlength="25">
                 </div>
 
             </div>  
@@ -36,7 +36,7 @@ if(isset($_POST['save'])){
             <div class="form-group">
                 <label class="col-md-4 control-label">Žanr filma</label>
                 <div class="col-md-4">
-                    <input name="zanr" placeholder="Žanr" class="form-control" type="text" required minlength="4" maxlength="4">
+                    <input name="zanr" placeholder="Žanr" class="form-control" type="text" required minlength="4" maxlength="25">
                 </div>
 
             </div>  
@@ -54,7 +54,7 @@ if(isset($_POST['save'])){
                             }
                         }
                         else {
-                            echo "<option value". " " ."> There are no bands available.</option>";
+                            echo "<option value". " " ."> Ne postoje slobodni reziseri.</option>";
                         }
                         ?>
                          <script type="text/javascript">
@@ -87,7 +87,7 @@ if(isset($_POST['save'])){
                             }
                         }
                         else {
-                            echo "<option value". " " ."> There are no genres available.</option>";
+                            echo "<option value". " " ."> Ne postoji slobodan glumac.</option>";
                         }
                         ?>
                          <script type="text/javascript">

@@ -4,8 +4,6 @@ include('model/glumacKlasa.php');
 if(isset($_GET['id'])){
     $idGlumac = $_GET['id'];
     $glumac = Glumac::getById($idGlumac);
-    //echo '<script>console.log('.$band->id.')</script>';
-
 }
 
 
@@ -17,7 +15,6 @@ if(isset($_GET['update'])){
     $glumac->drzava_porekla = $_GET['drzava_porekla'];
     $glumac->edit();
     header('Location: glumac.php');
-
 }
 
 ?>
@@ -57,8 +54,6 @@ if(isset($_GET['update'])){
                     <input name="drzava_porekla" value="<?php echo $glumac->drzava_porekla; ?>" class="form-control" type="text" required minlength="2">
                 </div>
             </div>
-           
-
            
             <div class="col-md-4 form-inline">
                 <button type="submit" id="update" name="update" class="btn btn-primary">Sačuvaj izmene</button>
