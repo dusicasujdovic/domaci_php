@@ -3,13 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2022 at 03:33 PM
+-- Generation Time: Apr 24, 2022 at 09:55 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -48,7 +49,6 @@ INSERT INTO `film` (`id`, `naziv`, `datum_premijere`, `zanr`, `id_reziser`, `id_
 (6, 'Male žene', '2019-12-25', 'Ljubavni/Drama', 3, 4),
 (7, 'Peti element', '1997-10-01', 'Naučnofantastični/Kriminalistički', 1, 2);
 
-
 -- --------------------------------------------------------
 
 --
@@ -71,7 +71,7 @@ INSERT INTO `glumac` (`id`, `ime`, `prezime`, `godine`, `drzava_porekla`) VALUES
 (1, 'Scarlett', 'Johansson', 37, 'SAD'),
 (2, 'Bruce', 'Willis', 67, 'Nemacka'),
 (3, 'Robert', 'De Niro', 78, 'SAD'),
-(4, 'Soirse ', 'Ronan', 28, 'SAD'),
+(4, 'Saoirse', 'Ronan', 27, 'SAD'),
 (5, 'Rosamund ', 'Pike', 43, 'Velika Britanija'),
 (6, 'Tippie', 'Hedren', 92, 'SAD'),
 (7, 'Roberto', 'Benigni', 69, 'Italija'),
@@ -96,12 +96,13 @@ CREATE TABLE `reziser` (
 --
 
 INSERT INTO `reziser` (`id`, `ime`, `prezime`, `broj_filmova`) VALUES
-(1, 'Luc', 'Besson', 78),
+(1, 'Luc', 'Besson', 77),
 (2, 'Martin', 'Scorsese', 94),
 (3, 'Greta', 'Gerwig', 2),
-(4, 'Marjane', 'Satrapi', 6),
+(4, 'Marjane', 'Satrapi', 5),
 (5, 'Roberto', 'Benigni', 25),
-(6, 'Alfred', 'Hitchcock', 49);
+(6, 'Alfred', 'Hitchcock', 49),
+(7, 'James', 'Cameron', 41);
 
 --
 -- Indexes for dumped tables
@@ -145,7 +146,7 @@ ALTER TABLE `glumac`
 -- AUTO_INCREMENT for table `reziser`
 --
 ALTER TABLE `reziser`
-  MODIFY `id` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
