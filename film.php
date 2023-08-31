@@ -72,10 +72,36 @@ include('dbBroker.php');
     </table>
 
       <div class="col-md-2" style = "font-family: cursive;">
-
+      <button id="btn-sortiraj" class="btn btn-normal" style="padding: 5px; background-color: white; border: 2px solid rgb(89, 157, 224); height:60px;font-size: 15px; border-radius: 15px;" onclick="sortTable()">Sortiraj tabelu</button>
         </div>
    <div id="film-edit">
 
 </div>
 </body>
 
+<script>
+         function sortTable() { 
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("film-table");
+            switching = true;
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[2];
+                    y = rows[i + 1].getElementsByTagName("TD")[2];
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+          }
+
+</script>

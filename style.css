@@ -218,6 +218,17 @@ nav ul li a:hover{
 
 }
 
+#myInput {
+    color: black;
+    width: 355px;
+    height: 60px;
+    background: #fffefd;
+    margin-top: 7px;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 2px solid black;
+    text-align: center;
+}
 
 .col-md-4{
     padding: 5px;
